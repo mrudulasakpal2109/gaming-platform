@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run Boy Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        #game {
+            width: 600px;
+            height: 200px;
+            margin: 50px auto;
+            border: 2px solid white;
+            position: relative;
+            overflow: hidden;
+            background: #222;
+        }
+
+        #player {
+            width: 30px;
+            height: 30px;
+            background: red;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+        }
+
+        #obstacle {
+            width: 30px;
+            height: 30px;
+            background: green;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            animation: move 2s infinite linear;
+        }
+
+        @keyframes move {
+            0% { right: 0; }
+            100% { right: 600px; }
+        }
+
+        .jump {
+            animation: jump 0.5s;
+        }
+
+        @keyframes jump {
+            0% { bottom: 0; }
+            50% { bottom: 80px; }
+            100% { bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🏃 Run Boy Game</h1>
+<p>Press SPACE to jump</p>
+
+<div id="game">
+    <div id="player"></div>
+    <div id="obstacle"></div>
+</div>
+
+<script>
+    let player = document.getElementById("player");
+
+    document.addEventListener("keydown", function(event) {
+        if (event.code === "Space") {
+            if (!player.classList.contains("jump")) {
+                player.classList.add("jump");
+
+                setTimeout(() => {
+                    player.classList.remove("jump");
+                }, 500);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
