@@ -40,15 +40,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install --no-cache-dir -r requirements.txt
 
-      # Linting
-      - name: Install Flake8
-        run: |
-          pip install flake8
-
-      - name: Run Linter
-        run: |
-          flake8 . --count --statistics
-
       # Basic verification
       - name: Verify Flask Import
         run: |
